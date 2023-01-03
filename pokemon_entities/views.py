@@ -80,7 +80,12 @@ def show_pokemon(request, pokemon_id):
             'pokemon_id': pokemon_evolution.id
         }
 
-    pokemon_evolution = Pokemon.objects.filter(previous_evolution=pokemon).first()
+    # pokemon_evolution = Pokemon.objects.filter(previous_evolution=pokemon).first()
+    try:
+        pokemon_evolution = pokemon.next_evolution.get()
+    except Pokemon.DoesNotExist:
+        pokemon_evolution = None
+        
     if pokemon_evolution:    
         pokemon_wrapper['next_evolution'] = {
             'img_url': request.build_absolute_uri(pokemon_evolution.image.url),

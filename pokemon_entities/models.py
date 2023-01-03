@@ -10,7 +10,7 @@ class Pokemon(models.Model):
     previous_evolution = models.ForeignKey(
         "Pokemon", 
         verbose_name='Parent',
-        related_name="parent",
+        related_name="next_evolution",
         on_delete=models.CASCADE,
         blank=True, null=True)
 
