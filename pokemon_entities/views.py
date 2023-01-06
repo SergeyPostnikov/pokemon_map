@@ -65,7 +65,7 @@ def show_pokemon(request, pokemon_id):
         disappeared_at__gt=time_now
         )
 
-    pokemon_wrapper = {
+    serialized_pokemon = {
         'img_url': request.build_absolute_uri(pokemon.image.url),
         'title_ru': pokemon.title,
         'title_en': pokemon.title_en,
@@ -75,7 +75,7 @@ def show_pokemon(request, pokemon_id):
 
     pokemon_evolution = pokemon.previous_evolution
     if pokemon_evolution:    
-        pokemon_wrapper['previous_evolution'] = {
+        serialized_pokemon['previous_evolution'] = {
             'img_url': request.build_absolute_uri(pokemon_evolution.image.url),
             'title_ru': pokemon_evolution.title,
             'pokemon_id': pokemon_evolution.id
@@ -88,7 +88,7 @@ def show_pokemon(request, pokemon_id):
         pokemon_evolution = None
         
     if pokemon_evolution:    
-        pokemon_wrapper['next_evolution'] = {
+        serialized_pokemon['next_evolution'] = {
             'img_url': request.build_absolute_uri(pokemon_evolution.image.url),
             'title_ru': pokemon_evolution.title,
             'pokemon_id': pokemon_evolution.id
@@ -103,5 +103,5 @@ def show_pokemon(request, pokemon_id):
         )
 
     return render(request, 'pokemon.html', context={
-        'map': folium_map._repr_html_(), 'pokemon': pokemon_wrapper
+        'map': folium_map._repr_html_(), 'pokemon': serialized_pokemon
     })
