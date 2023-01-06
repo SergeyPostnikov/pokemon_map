@@ -34,11 +34,11 @@ class PokemonEntity(models.Model):
     disappeard_at = models.DateTimeField(
         verbose_name="Исчез", 
         blank=True, null=True)
-    level = models.IntegerField(verbose_name="Уровень", blank=True, default=0)
-    health = models.IntegerField(verbose_name="Здоровье", blank=True, default=0)
-    strength = models.IntegerField(verbose_name="Сила", blank=True, default=0)
-    defence = models.IntegerField(verbose_name="Защита", blank=True, default=0)
-    stamina = models.IntegerField(verbose_name="Выносливость", blank=True, default=0)
+    level = models.IntegerField(verbose_name="Уровень", blank=True)
+    health = models.IntegerField(verbose_name="Здоровье", blank=True)
+    strength = models.IntegerField(verbose_name="Сила", blank=True)
+    defence = models.IntegerField(verbose_name="Защита", blank=True)
+    stamina = models.IntegerField(verbose_name="Выносливость", blank=True)
 
     def __str__(self):
         return f'Экземпляр {self.kind.title}'
