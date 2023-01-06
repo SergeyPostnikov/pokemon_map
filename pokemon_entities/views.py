@@ -37,7 +37,7 @@ def show_all_pokemons(request):
         add_pokemon(
             folium_map, pokemon_entity.latitude,
             pokemon_entity.longitude,
-            request.build_absolute_uri(pokemon_entity.kind.image.url)
+            request.build_absolute_uri(pokemon_entity.pokemon.image.url)
         )
 
     pokemons_on_page = []
@@ -60,7 +60,7 @@ def show_pokemon(request, pokemon_id):
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
 
     pokemon_entities = PokemonEntity.objects.filter(
-        kind=pokemon,
+        pokemon=pokemon,
         appeared_at__lte=time_now,
         disappeared_at__gt=time_now
         )
