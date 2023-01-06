@@ -28,10 +28,10 @@ class PokemonEntity(models.Model):
         null=True)
     latitude = models.FloatField(verbose_name="Широта")
     longitude = models.FloatField(verbose_name="Долгота")
-    appeard_at = models.DateTimeField(
+    appeared_at = models.DateTimeField(
         verbose_name="Возник",
         blank=True, null=True)
-    disappeard_at = models.DateTimeField(
+    disappeared_at = models.DateTimeField(
         verbose_name="Исчез", 
         blank=True, null=True)
     level = models.IntegerField(verbose_name="Уровень", blank=True)
