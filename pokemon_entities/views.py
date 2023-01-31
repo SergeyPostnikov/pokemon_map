@@ -56,7 +56,6 @@ def show_all_pokemons(request):
 
 def show_pokemon(request, pokemon_id):
     time_now = localtime()
-    pokemon = Pokemon.objects.get(id=pokemon_id)
     pokemon = get_object_or_404(Pokemon, id=pokemon_id)
 
     pokemon_entities = PokemonEntity.objects.filter(
